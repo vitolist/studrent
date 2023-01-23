@@ -1,0 +1,26 @@
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.card {
+    padding-left: 28px;
+    width: 30%;
+    height: 100%;
+    background-color: #fff;
+}
+
+.opis {
+    width: 70%;
+    height: 100%;
+    background-color: #2667FF;
+}
+
+.card h1 {
+    width: fit-content;
+    font-weight: 700;
+    font-size: 36px;
+    color: #000;
+}

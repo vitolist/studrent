@@ -5,22 +5,59 @@
     height: 100vh;
 }
 
-.card {
-    padding-left: 28px;
+.forma {
+    padding: 0 28px;
     width: 30%;
     height: 100%;
     background-color: #fff;
+}
+
+.forma h1 {
+    width: fit-content;
+    font-weight: 700;
+    font-size: 36px;
+    color: #000;
+}
+
+.forma form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    margin: 6px 0;
+}
+
+.input input[type="text"] {
+    height: 28px;
+    border-radius: 5px;
+    background-color: #F1F3F4;
+    outline: none;
+    border: none;
+    padding-left: 5px;
+}
+
+.input input[type="text"]:focus {
+    border: 2px solid #2667FF;
+}
+
+.forma input[type="submit"] {
+    height: 28px;
+    border-radius: 5px;
+    background-color: #ADD7F6;
+    outline: none;
+    border: none;
+}
+
+.forma input[type="submit"]:hover {
+    cursor: pointer;
+    background-color: #8ec8f2;
 }
 
 .opis {
     width: 70%;
     height: 100%;
     background-color: #2667FF;
-}
-
-.card h1 {
-    width: fit-content;
-    font-weight: 700;
-    font-size: 36px;
-    color: #000;
 }

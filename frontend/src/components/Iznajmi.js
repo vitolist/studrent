@@ -1,8 +1,26 @@
-import React from 'react';
+import { React, useEffect, useState } from 'react';
 import styles from '../styles/Iznajmi.module.css';
 import Najam from './Najam';
 
 const Iznajmi = () => {
+
+    const [najmovi, setNajmovi] = useState([]);
+    let n = [];
+    const [ucitano, setUcitano] = useState(false);
+
+    const ucitajNajmove = () => {
+        for (let i = 0; i < 5; i++) {
+            n.push(i);
+            setNajmovi(n);
+            // console.log(najmovi);
+        }
+        setUcitano(true);
+    }
+
+    useEffect(() => {
+        ucitajNajmove();
+    }, []);
+
     return (
         <div className={styles.content}>
             <div className={styles.traka}>
@@ -11,15 +29,11 @@ const Iznajmi = () => {
 
             <div className={styles.pretraga}>
                 <div className={styles.popis}>
-                    <Najam />
-                    <Najam />
-                    <Najam />
-                    <Najam />
-                    <Najam />
-                    <Najam />
-                    <Najam />
-                    <Najam />
-                    <Najam />
+                    {/* <p>{ucitano.toString()}</p> */}
+                    {/* {console.log(ucitano)} */}
+                    {/* {console.log(najmovi)} */}
+                    {najmovi.length > 0 ?
+                        najmovi.map((item) => <Najam key={item.toString()} />) : <p>ucitavanje</p>}
                 </div>
 
                 <div className={styles.filter}>

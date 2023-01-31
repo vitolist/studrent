@@ -30,6 +30,10 @@ const Prijava = () => {
 
                     <input type="submit" value="Prijavi se" />
                 </form>
+                <button onClick={() => {
+                    fetch("/proba");
+                    console.log("fetch");
+                }}>proba</button>
             </div>
             <div className={styles.opis}>
             </div>

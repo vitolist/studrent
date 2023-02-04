@@ -18,7 +18,7 @@ const Header = () => {
                 <button>Moji najmovi</button>
                 <button>Chat</button>
             </nav>
-            <Link to={"/prijava"}><div className={styles.profilna}></div></Link>
+            <Link to={"/registracija"}><div className={styles.profilna}></div></Link>
         </header>
     )
 }

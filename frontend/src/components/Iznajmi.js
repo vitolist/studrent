@@ -33,7 +33,7 @@ const Iznajmi = () => {
                     {/* {console.log(ucitano)} */}
                     {/* {console.log(najmovi)} */}
                     {najmovi.length > 0 ?
-                        najmovi.map((item) => <Najam key={item.toString()} />) : <p>ucitavanje</p>}
+                        najmovi.map((item) => <Najam key={Math.random() * 1000} />) : <p>ucitavanje</p>}
                 </div>
 
                 <div className={styles.filter}>

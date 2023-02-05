@@ -5,7 +5,7 @@ import Input from './Input';
 
 const Registracija = () => {
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const val = e.target.elements;
 
@@ -20,8 +20,9 @@ const Registracija = () => {
         };
         console.log(podaci);
 
-        // fetch(`/dodajkorisnika/${podaci["ime"]}&${podaci["prezime"]}&${"user"}&${"lozinka"}&${"09944544"}&${1}&${Date.now()}&${2}&${3}`);
-        fetch(`/dodajkorisnika/${podaci["ime"]}&${podaci["prezime"]}&${podaci["username"]}&${podaci["lozinka"]}&${podaci["broj_telefona"]}&${podaci["spol"]}&${podaci["datum_rodenja"]}&${1}&${1}`);
+        const response = await fetch(`/korisnik/${podaci["ime"]}&${podaci["prezime"]}&${podaci["username"]}&${podaci["lozinka"]}&${podaci["broj_telefona"]}&${podaci["spol"]}&${podaci["datum_rodenja"]}&${5}&${null}`);
+
+        console.log(await response.text())
 
         for (let i = 0; i < e.target.elements.length; i++) {
             if (e.target.elements[i].type != "submit") { e.target.elements[i].value = ""; }
@@ -47,9 +48,7 @@ const Registracija = () => {
                         </select>
                     </div>
 
-                    <div>
-                        <input className={styles.dodatni} name='datum_rodenja' type="date" />
-                    </div>
+                    <Input name='datum_rodenja' type="date" />
 
                     <input type="submit" value="Prijavi se" />
                 </form>

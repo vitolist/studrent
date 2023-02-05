@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../styles/Header.module.css'
 
 const Header = () => {
+
+    let [index, setIndex] = useState(0);
+
+    useEffect(() => {
+        
+    }, [index]);
+
     return (
         <header>
 
@@ -14,9 +21,9 @@ const Header = () => {
                 placeholder='Pretražite gradove'
             />
             <nav>
-                <button>Iznajmi</button>
-                <button>Moji najmovi</button>
-                <button>Chat</button>
+                <Link onClick={() => setIndex(0)} to={""}>Iznajmi</Link>
+                <Link onClick={() => setIndex(1)} to={"moji_najmovi"}>Moji najmovi</Link>
+                <Link onClick={() => setIndex(2)} to={""}>Chat</Link>
             </nav>
             <Link to={"/registracija"}><div className={styles.profilna}></div></Link>
         </header>

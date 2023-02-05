@@ -10,6 +10,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.App {
+  height: 100vh;
+}
+
 a {
   text-decoration: none;
   width: fit-content;

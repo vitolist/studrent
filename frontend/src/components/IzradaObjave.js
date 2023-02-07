@@ -1,22 +1,33 @@
-import { React, useEffect, useState } from 'react';
+import { React, useEffect, useRef, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../styles/IzradaObjave.module.css';
 import Input from './Input';
+import { KorisnikContext } from '../App';
 
 const IzradaObjave = () => {
+    const [korisnik, setKorisnik] = useContext(KorisnikContext);
 
     const [sobe, setSobe] = useState([]);
+    const sobeInput = useRef([0, 0, 0, 0, 0]);
+
     const dodajSobu = () => {
         if (sobe.length < 5) {
             setSobe([...sobe,
-            <Input key={sobe.length} name="kvadratura" label={`Kapacitet sobe ${sobe.length + 1}`} placeholder="Upišite kapacitet sobe" type="number" />]);
+            <Input onChange={onChange} key={sobe.length} name={`soba${sobe.length + 1}`} label={`Kapacitet sobe ${sobe.length + 1}`} placeholder="Upišite kapacitet sobe" type="number" />]);
         }
+        // console.log(sobe);
     }
 
     const makniSobu = () => {
         if (sobe.length > 0) {
             setSobe(sobe.filter((soba) => soba.key != sobe.length - 1));
         }
+    }
+
+    const onChange = (e) => {
+        const value = e.target.value;
+        const i = parseInt(e.currentTarget.name[4] - 1);
+        sobeInput[i] = value;
     }
 
     const handleSubmit = async (e) => {
@@ -30,7 +41,7 @@ const IzradaObjave = () => {
         };
 
         const stan = {
-            kvadratura: val.kv.value,
+            kvadratura: val.kvadratura.value,
             broj_soba: sobe.length,
             broj_kuhinja: val.broj_kuhinja.value,
             broj_kupaona: val.broj_kupaona.value,
@@ -38,16 +49,36 @@ const IzradaObjave = () => {
             tv: val.tv.checked ? 1 : 0,
             ljubimci: val.ljubimci.checked ? 1 : 0,
         };
-        console.log("k", val.kv.value);
 
+        // upis adrese
         const adresa_id = await (await fetch(`/adresa/${adresa["grad_id"]}&${adresa["ulica"]}&${adresa["broj"]}`)).text();
-        // console.log(adresa_id);
 
-        console.log(stan)
+        // upis karakteristika
         const karakteristike_id = await (await fetch(`/karakteristike/${stan["kvadratura"]}&${stan["broj_soba"]}&${stan["broj_kuhinja"]}&${stan["broj_kupaona"]}&${stan["klima"]}&${stan["tv"]}&${stan["ljubimci"]}`)).text();
-        // console.log(karakteristike_id);
 
-        await fetch(`/stan/${adresa_id}&${karakteristike_id}&${1}&${Date.now()}&${1}&${0.99}&${1}`);
+        // upis stana
+        const stan_id = await (await fetch(`/stan/${adresa_id}&${karakteristike_id}&${1}&${Date.now()}&${0.99}`)).text();
+        console.log("stan_id", stan_id)
+        const vlasnistvo_id = await (await fetch(`/vlasnistvo/${stan_id}&${korisnik["id"]}&${1}`)).text();
+
+        // upis soba
+        let sobe_promises = [];
+        let sobe_id = []
+        let promises = []
+        console.log("soba")
+        for (let i = 0; i < sobe.length; i++) {
+            sobe_promises.push((await fetch(`/sobe/${stan_id}`)).text());
+            console.log(i, "soba")
+        }
+        Promise.all(sobe_promises).then((values) => {
+            sobe_id = values;
+            console.log(sobe_id);
+            for (let i = 0; i < sobe.length; i++) {
+                promises.push(fetch(`/tip_sobe/${sobe_id[i]}&${sobeInput[i]}&${0}`));
+                console.log(i, "soba")
+            }
+        });
+        Promise.all(promises);
 
         // for (let i = 0; i < e.target.elements.length; i++) {
         //     if (e.target.elements[i].type != "submit") { e.target.elements[i].value = ""; }
@@ -59,7 +90,7 @@ const IzradaObjave = () => {
             <div className={styles.forma}>
                 <form onSubmit={handleSubmit} action="">
                     <div>
-                        <Input name="kv" label="Kvadratura (m2)" placeholder="Upišite kvadraturu" type="number" />
+                        <Input name="kvadratura" label="Kvadratura (m2)" placeholder="Upišite kvadraturu" type="number" />
                         <Input name="broj_kuhinja" label="Broj kuhinja" placeholder="Upišite broj kuhinja" type="number" />
                         <Input name="broj_kupaona" label="Broj kupaona" placeholder="Upišite broj kupaona" type="number" />
                         <Input name="klima" label="Klima" type="checkbox" />

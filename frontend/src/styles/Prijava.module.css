@@ -65,3 +65,17 @@
     cursor: pointer;
     background-color: #8ec8f2;
 }
+
+.link {
+    margin-left: auto;
+    margin-right: auto;
+    color: #000;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.link:hover {
+    color: #000;
+}

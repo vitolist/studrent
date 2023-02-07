@@ -4,16 +4,20 @@ import Najam from './Najam';
 
 const Iznajmi = () => {
 
-    const [najmovi, setNajmovi] = useState([]);
-    let n = [];
+    const [najmovi, setNajmovi] = useState({});
     const [ucitano, setUcitano] = useState(false);
 
-    const ucitajNajmove = () => {
-        for (let i = 0; i < 5; i++) {
-            n.push(i);
-            setNajmovi(n);
-            // console.log(najmovi);
-        }
+    const ucitajNajmove = async () => {
+        const najmoviJSON = await (await fetch("/dobi_stanove")).json();
+        // console.log(najmoviJSON);
+
+        setNajmovi(najmoviJSON.map(najam => ({
+            id: najam["id"],
+            naslov: "kuća",
+            cijena: najam["cijena"],
+            ulica: najam["ulica"],
+        })
+        ));
         setUcitano(true);
     }
 
@@ -29,11 +33,13 @@ const Iznajmi = () => {
 
             <div className={styles.pretraga}>
                 <div className={styles.popis}>
-                    {/* <p>{ucitano.toString()}</p> */}
-                    {/* {console.log(ucitano)} */}
-                    {/* {console.log(najmovi)} */}
-                    {najmovi.length > 0 ?
-                        najmovi.map((item) => <Najam key={Math.random() * 1000} />) : <p>ucitavanje</p>}
+                    {ucitano ?
+                        najmovi.map((najam) => <Najam
+                            naslov={najam["naslov"]}
+                            ulica={najam["ulica"]}
+                            cijena={najam["cijena"]}
+                            key={Math.random() * 1000} />) : <p>ucitavanje</p>}
+                    {/* {ucitano && console.log(najmovi)} */}
                 </div>
 
                 <div className={styles.filter}>

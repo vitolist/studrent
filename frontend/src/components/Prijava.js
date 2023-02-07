@@ -1,23 +1,28 @@
-import { React, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { React, useEffect, useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from '../styles/Prijava.module.css';
 import Input from './Input';
+import { KorisnikContext } from '../App';
 
 const Prijava = () => {
 
-    const handleSubmit = (e) => {
+    const [korisnik, setKorisnik] = useContext(KorisnikContext);
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const podaci = {
-            ime: e.target.elements.ime.value,
-            prezime: e.target.elements.prezime.value,
+            username: e.target.elements.username.value,
+            lozinka: e.target.elements.lozinka.value,
         };
-        console.log(podaci);
 
-        fetch(`/dodajkorisnika/${podaci["ime"]}&${podaci["prezime"]}`);
 
-        for (let i = 0; i < e.target.elements.length; i++) {
-            if (e.target.elements[i].type != "submit") { e.target.elements[i].value = ""; }
-        }
+        const korisnikJSON = await (await fetch(`/prijava/${podaci["username"]}&${podaci["lozinka"]}`)).json();
+        // console.log(korisnikJSON);
+
+        setKorisnik(korisnikJSON[0]);
+        console.log(korisnikJSON[0]);
+        navigate("/");
     }
 
     return (
@@ -25,15 +30,12 @@ const Prijava = () => {
             <div className={styles.forma}>
                 <Link to={"/"} ><h1>StudRent</h1></Link>
                 <form onSubmit={handleSubmit} action="">
-                    <Input name="ime" placeholder="Upišite ime" label="Ime" />
-                    <Input name="prezime" placeholder="Upišite prezime" label="Prezime" />
+                    <Input name="username" placeholder="Upišite username" label="Username" />
+                    <Input name="lozinka" placeholder="Upišite lozinku" label="Lozinka" />
 
                     <input type="submit" value="Prijavi se" />
                 </form>
-                <button onClick={() => {
-                    fetch("/proba");
-                    console.log("fetch");
-                }}>proba</button>
+                <Link className={styles.link} to={"/registracija"}>Registracija</Link>
             </div>
             <div className={styles.opis}>
             </div>

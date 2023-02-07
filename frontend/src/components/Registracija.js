@@ -38,7 +38,7 @@ const Registracija = () => {
                     <Input name="prezime" placeholder="Upišite prezime" label="Prezime" />
                     <Input name="username" placeholder="Upišite prezime" label="Korisničko ime" />
                     <Input name="lozinka" placeholder="Upišite prezime" label="Lozinka" />
-                    <Input name="broj_telefona" placeholder="Upišite prezime" label="Broj telefona" />
+                    <Input name="broj_telefona" placeholder="Upišite prezime" label="Broj telefona" type="number" />
 
                     <div className={styles.dodatni}>
                         <label htmlFor="spol">Spol</label>
@@ -50,8 +50,9 @@ const Registracija = () => {
 
                     <Input name='datum_rodenja' type="date" />
 
-                    <input type="submit" value="Prijavi se" />
+                    <input type="submit" value="Registriraj se" />
                 </form>
+                <Link className={styles.link} to={"/prijava"}>Prijava</Link>
             </div>
             <div className={styles.opis}>
             </div>

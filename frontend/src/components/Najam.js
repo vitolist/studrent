@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from '../styles/Najam.module.css'
 
-const Najam = () => {
+const Najam = ({ naslov, ulica, cijena }) => {
     return (
         <div className={styles.card}>
             <img src={require("../images/placeholder.png")} alt="" />
             <div className={styles.opis}>
-                <span className={styles.naslov}>Naslov najma</span>
-                <span className={styles.ulica}>Ul. Ivana Gundulića 47</span>
-                <span className={styles.cijena}>14.47 €/mj.</span>
+                <span className={styles.naslov}>{naslov}</span>
+                <span className={styles.ulica}>{ulica}</span>
+                <span className={styles.cijena}>{cijena} €/mj.</span>
             </div>
         </div>
     )

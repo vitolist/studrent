@@ -1,4 +1,4 @@
-import { createContext, useEffect } from "react";
+import React, { createContext, useMemo, useState } from "react";
 import { BrowserRouter, Link, Route, Routes, Navigate, redirect } from "react-router-dom";
 import Main from "./components/Main";
 import MojiNajmovi from "./components/MojiNajmovi";
@@ -6,17 +6,15 @@ import Pocetna from "./components/Pocetna";
 import Prijava from "./components/Prijava";
 import Registracija from "./components/Registracija";
 
-const korisnik = {
-  prijavljen: false
-}
-
-const KorisnikContext = createContext(korisnik);
+export const KorisnikContext = createContext();
 
 function App() {
 
+  const [korisnik, setKorisnik] = useState({});
+
   return (
     <div className="App">
-      <KorisnikContext.Provider value={korisnik}>
+      <KorisnikContext.Provider value={[korisnik, setKorisnik]}>
         <BrowserRouter>
           <Routes>
 

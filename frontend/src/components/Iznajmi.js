@@ -85,6 +85,10 @@ const Iznajmi = () => {
 
                         <input type="submit" value="Filtriraj" />
                     </form>
+                    <button onClick={() => {
+                        setFilter({});
+                        setFiltriranje(false);
+                    }}>Poništi filter</button>
                 </div>
             </div>
         </div>

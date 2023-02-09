@@ -6,7 +6,10 @@ import Prijava from './Prijava';
 
 const Pocetna = () => {
     const style = {
-        height: "100%"
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        // overflow: "hidden"
     }
 
     return (

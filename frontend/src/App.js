@@ -1,7 +1,9 @@
 import React, { createContext, useMemo, useState } from "react";
 import { BrowserRouter, Link, Route, Routes, Navigate, redirect } from "react-router-dom";
+import Iznajmi from "./components/Iznajmi";
 import Main from "./components/Main";
 import MojiNajmovi from "./components/MojiNajmovi";
+import Najam from "./components/Najam";
 import Pocetna from "./components/Pocetna";
 import Prijava from "./components/Prijava";
 import Registracija from "./components/Registracija";
@@ -19,7 +21,10 @@ function App() {
           <Routes>
 
             <Route path="/" element={<Pocetna />} >
-              <Route path="" element={<Main />} />
+              <Route path="" element={<Main />} >
+                <Route path="" element={<Iznajmi />} />
+                <Route path="najam/:stan_id" element={<Najam />} />
+              </Route>
               <Route path="moji_najmovi" element={<MojiNajmovi />} />
             </Route>
             <Route path="/prijava" element={<Prijava />} />

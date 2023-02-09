@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import IzradaObjave from './IzradaObjave';
-import Najam from './Najam';
+import Najam from './NajamCard';
 
 const MojiNajmovi = () => {
     return (

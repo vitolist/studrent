@@ -62,9 +62,9 @@ const Mapa = () => {
     }, 1000);
 
     return (
-        <div id='map'
-            style={{ width: "640px", height: "100%" }}></div>
-    )
+        <div id=''
+            style={{ width: "40%", height: "100%", backgroundColor: "#e9e9e9" }}></div>
+    )// TODO id map
 }
 
 export default Mapa;

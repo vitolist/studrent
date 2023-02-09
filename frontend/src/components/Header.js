@@ -6,8 +6,10 @@ import { KorisnikContext } from '../App';
 const Header = () => {
 
     const [korisnik, setKorisnik] = useContext(KorisnikContext);
+    const [index, setIndex] = useState(0);
 
-    let [index, setIndex] = useState(0);
+    const selectedIndex = { "fontWeight": "700", "color": "#2667FF", "fontSize": "20px" };
+    const notSelected = { "margin": "0 12px", "backgroundColor": "transparent", "outline": "none", "border": "none", "cursor": "pointer", "fontWeight": "500", "fontSize": "20px", "color": "#000" }
 
     useEffect(() => {
 
@@ -24,9 +26,14 @@ const Header = () => {
                 placeholder='Pretražite gradove'
             />
             <nav>
-                <Link onClick={() => setIndex(0)} to={""}>Pronađi</Link>
-                <Link onClick={() => setIndex(1)} to={"moji_najmovi"}>Moji najmovi</Link>
-                <Link onClick={() => setIndex(2)} to={""}>Chat</Link>
+                <Link style={index == 0 ? selectedIndex : notSelected}
+                    onClick={() => setIndex(0)} to={""}>Pronađi</Link>
+
+                <Link style={index == 1 ? selectedIndex : notSelected}
+                    onClick={() => setIndex(1)} to={"moji_najmovi"}>Moji najmovi</Link>
+
+                <Link style={index == 2 ? selectedIndex : notSelected}
+                    onClick={() => setIndex(2)} to={""}>Chat</Link>
             </nav>
             <Link to={"/prijava"}><div className={styles.profilna}></div></Link>
             <span>ime: {korisnik["ime"]}</span>

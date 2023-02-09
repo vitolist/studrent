@@ -1,15 +1,28 @@
-import React from 'react';
-import styles from '../styles/Najam.module.css'
+import React, { useContext } from 'react';
+import { useParams } from 'react-router-dom';
+import NajamCard from './NajamCard';
+import { KorisnikContext } from '../App';
 
-const Najam = ({ naslov, ulica, cijena }) => {
+const Najam = () => {
+
+    const [korisnik, setKorisnik] = useContext(KorisnikContext);
+    const params = useParams();
+
+    const iznajmi = async (e) => {
+        e.preventDefault();
+        const val = e.target.elements;
+
+        const podaci = {
+            stan_id: params.stan_id,
+            korisnik_id: korisnik["id"],
+        };
+
+        const stanje = await fetch(`/iznajmi/${podaci["stan_id"]}&${podaci["korisnik_id"]}&${1}`);
+    }
+
     return (
-        <div className={styles.card}>
-            <img src={require("../images/placeholder.png")} alt="" />
-            <div className={styles.opis}>
-                <span className={styles.naslov}>{naslov}</span>
-                <span className={styles.ulica}>{ulica}</span>
-                <span className={styles.cijena}>{cijena} €/mj.</span>
-            </div>
+        <div>
+            <button onClick={iznajmi}>iznajmi</button>
         </div>
     )
 }

@@ -37,7 +37,7 @@ app.get("/proba", (req, res) => {
 });
 
 // dodaj korisnika
-app.get("/korisnik/:ime&:prezime&:username&:lozinka&:broj_telefona&:spol&:datum_rodenja&:skola_id&:profilna_id", (req, res) => {
+app.get("/korisnik/:ime&:prezime&:username&:lozinka&:broj_telefona&:spol&:datum_rodenja&:skola_id&:profilna_id&:email", (req, res) => {
     const r = req.params;
 
     let post = {
@@ -50,6 +50,7 @@ app.get("/korisnik/:ime&:prezime&:username&:lozinka&:broj_telefona&:spol&:datum_
         datum_rodenja: r.datum_rodenja,
         skola_id: r.skola_id,
         profilna_id: r.profilna_id,
+        email: r.email,
     }
     console.log(req.params);
 
@@ -205,10 +206,28 @@ app.get("/tip_sobe/:soba_id&:kapacitet&:popunjenost", (req, res) => {
 // dobi stanove
 app.get("/dobi_stanove", (req, res) => {
 
-    let sql = "SELECT stan.id, stan.cijena, adresa.ulica FROM stan, adresa WHERE adresa.id=stan.adresa_id LIMIT 5";
+    let sql = "SELECT stan.id, cijena, ulica, klima, tv, ljubimci FROM stan, adresa, karakteristike WHERE adresa.id=stan.adresa_id AND stan.karakteristike_id=karakteristike.id";
     db.query(sql, (err, result) => {
         if (err) throw err;
         res.json(result);
+    });
+});
+
+// iznajmi
+app.get("/iznajmi/:stan_id&:korisnik_id&:aktivno", (req, res) => {
+
+    const r = req.params;
+
+    let post = {
+        stan_id: r.stan_id,
+        korisnik_id: r.korisnik_id,
+        aktivno: parseInt(r.aktivno),
+    }
+
+    let sql = "INSERT INTO najam SET ?";
+    db.query(sql, post, (err, result) => {
+        if (err) throw err;
+        res.send(200);
     });
 });
 

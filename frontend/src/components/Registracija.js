@@ -17,10 +17,11 @@ const Registracija = () => {
             broj_telefona: val.broj_telefona.value,
             spol: val.spol.value,
             datum_rodenja: val.datum_rodenja.value,
+            email: val.email.value,
         };
         console.log(podaci);
 
-        const response = await fetch(`/korisnik/${podaci["ime"]}&${podaci["prezime"]}&${podaci["username"]}&${podaci["lozinka"]}&${podaci["broj_telefona"]}&${podaci["spol"]}&${podaci["datum_rodenja"]}&${5}&${null}`);
+        const response = await fetch(`/korisnik/${podaci["ime"]}&${podaci["prezime"]}&${podaci["username"]}&${podaci["lozinka"]}&${podaci["broj_telefona"]}&${podaci["spol"]}&${podaci["datum_rodenja"]}&${5}&${null}&${podaci["email"]}`);
 
         console.log(await response.text())
 
@@ -36,9 +37,10 @@ const Registracija = () => {
                 <form onSubmit={handleSubmit} action="">
                     <Input name="ime" placeholder="Upišite ime" label="Ime" />
                     <Input name="prezime" placeholder="Upišite prezime" label="Prezime" />
-                    <Input name="username" placeholder="Upišite prezime" label="Korisničko ime" />
-                    <Input name="lozinka" placeholder="Upišite prezime" label="Lozinka" />
-                    <Input name="broj_telefona" placeholder="Upišite prezime" label="Broj telefona" type="number" />
+                    <Input name="username" placeholder="Upišite username" label="Korisničko ime" />
+                    <Input name="email" placeholder="Upišite email" label="Email" />
+                    <Input name="lozinka" placeholder="Upišite lozinku" label="Lozinka" />
+                    <Input name="broj_telefona" placeholder="Upišite broj telefona" label="Broj telefona" type="number" />
 
                     <div className={styles.dodatni}>
                         <label htmlFor="spol">Spol</label>

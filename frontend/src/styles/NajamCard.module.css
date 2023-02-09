@@ -1,0 +1,62 @@
+.card {
+    /* width: 460px; */
+    width: 100%;
+    padding: 6px;
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1.5px solid #F1F3F4;
+
+    /* background-color: #fff;
+    border-radius: 0;
+    border: solid 1.5px #e5e5e5; */
+}
+
+.card:hover {
+    cursor: pointer;
+    /* background-color: #F1F3F4; */
+}
+
+.opis {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+.opis div span {
+    background-color: #E4E9F7;
+    color: #2D52B1;
+    margin: 0 2px;
+    padding: 2px 6px;
+    /* border: solid 1.5px #96A8D8; */
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.naslov {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+}
+
+.ulica {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #979797;
+}
+
+.cijena {
+    width: fit-content;
+    margin-top: auto;
+    padding: 2px 6px;
+    font-size: 18px;
+    background-color: #E4F7E8;
+    color: #136624;
+    /* border: solid 1.5px #89B291; */
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}

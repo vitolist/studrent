@@ -8,6 +8,7 @@ const Iznajmi = () => {
     const [najmovi, setNajmovi] = useState([]);
     const [ucitano, setUcitano] = useState(false);
     const [filter, setFilter] = useState({});
+    const [filtriranje, setFiltriranje] = useState(false);
 
     const ucitajNajmove = async () => {
         const najmoviJSON = await (await fetch("/dobi_stanove")).json();
@@ -37,9 +38,11 @@ const Iznajmi = () => {
         };
 
         setFilter(f);
+        setFiltriranje(true);
     }
 
     const filtriraj = (najam) => {
+        if (!filtriranje) { return true }
         if (najam["tv"] != filter["tv"]
             || najam["klima"] != filter["klima"]
             || najam["ljubimci"] != filter["ljubimci"]) { return false; }
@@ -60,7 +63,7 @@ const Iznajmi = () => {
                 <div className={styles.popis}>
                     {ucitano ?
                         najmovi.map((najam) =>
-                        ((filtriraj(najam) && Object.keys(filter).length > 0) && <Najam
+                        (filtriraj(najam) && <Najam
                             najam_id={najam["id"]}
                             naslov={najam["naslov"]}
                             ulica={najam["ulica"]}

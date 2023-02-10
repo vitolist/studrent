@@ -36,9 +36,13 @@ const MojiNajmovi = () => {
 
     useEffect(() => {
         // console.log(korisnik)
-        if (ucitano) { ucitajStanove(); }
-        if (ucitano) { ucitajNajmove(); }
-        if (korisnik != {}) { setUcitano(true) }
+        // if (korisnik != {}) { setUcitano(true) }
+        // if (ucitano) { ucitajStanove(); }
+        // if (ucitano) { ucitajNajmove(); }
+        setTimeout(() => {
+            ucitajNajmove();
+            ucitajStanove();
+        }, 100);
     }, [korisnik]);
 
     return (

@@ -1,7 +1,8 @@
 .popis {
     display: flex;
     flex-direction: row;
-    font-size: 10px;
+    justify-content: space-around;
+    font-size: 14px;
 }
 
 .popis td {

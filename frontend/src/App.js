@@ -15,26 +15,46 @@ function App() {
 
   const [korisnik, setKorisnik] = useState({});
 
-  useEffect(() => {
-    setKorisnik({
-      "id": 33,
-      "ime": "Vito",
-      "prezime": "List",
-      "username": "vitolist",
-      "lozinka": "8aa87050051efe26091a13dbfdf901c6",
-      "broj_telefona": "12345",
-      "spol": {
-        "type": "Buffer",
-        "data": [
-          1
-        ]
-      },
-      "datum_rodenja": "2005-11-06T23:00:00.000Z",
-      "skola_id": 5,
-      "profilna_id": 0,
-      "email": null
-    });
-  }, [])
+  // useEffect(() => {
+  //   setKorisnik({
+  //     "id": 33,
+  //     "ime": "Vito",
+  //     "prezime": "List",
+  //     "username": "vitolist",
+  //     "lozinka": "8aa87050051efe26091a13dbfdf901c6",
+  //     "broj_telefona": "12345",
+  //     "spol": {
+  //       "type": "Buffer",
+  //       "data": [
+  //         1
+  //       ]
+  //     },
+  //     "datum_rodenja": "2005-11-06T23:00:00.000Z",
+  //     "skola_id": 5,
+  //     "profilna_id": 0,
+  //     "email": null
+  //   });
+  // }, [])
+  // useEffect(() => {
+  //   setKorisnik({
+  //     "id": 35,
+  //     "ime": "vito",
+  //     "prezime": "list",
+  //     "username": "mirko",
+  //     "lozinka": "13592f2caf86af30572a825229a2a8dc",
+  //     "broj_telefona": "12312",
+  //     "spol": {
+  //       "type": "Buffer",
+  //       "data": [
+  //         1
+  //       ]
+  //     },
+  //     "datum_rodenja": "2023-02-08T23:00:00.000Z",
+  //     "skola_id": 5,
+  //     "profilna_id": 0,
+  //     "email": "mrko"
+  //   });
+  // }, [])
 
   return (
     <div className="App">

@@ -18,7 +18,7 @@ const Prijava = () => {
 
 
         const korisnikJSON = await (await fetch(`/prijava/${podaci["username"]}&${podaci["lozinka"]}`)).json();
-        // console.log(korisnikJSON);
+        console.log(korisnikJSON);
 
         setKorisnik(korisnikJSON[0]);
         console.log(korisnikJSON[0]);

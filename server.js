@@ -206,7 +206,7 @@ app.get("/tip_sobe/:soba_id&:kapacitet&:popunjenost", (req, res) => {
 // dobi stanove
 app.get("/dobi_stanove", (req, res) => {
 
-    let sql = "SELECT stan.id, cijena, ulica, klima, tv, ljubimci FROM stan, adresa, karakteristike WHERE adresa.id=stan.adresa_id AND stan.karakteristike_id=karakteristike.id";
+    let sql = "SELECT stan.id, cijena, ulica, klima, tv, ljubimci FROM stan, adresa, karakteristike WHERE adresa.id=stan.adresa_id AND stan.karakteristike_id=karakteristike.id AND stan.aktivan=1";
     db.query(sql, (err, result) => {
         if (err) throw err;
         res.json(result);
@@ -228,6 +228,30 @@ app.get("/iznajmi/:stan_id&:korisnik_id&:aktivno", (req, res) => {
     db.query(sql, post, (err, result) => {
         if (err) throw err;
         res.send(200);
+    });
+});
+
+// moji stanovi
+app.get("/moji_stanovi/:vlasnik_id", (req, res) => {
+
+    const vlasnik_id = req.params.vlasnik_id;
+
+    let sql = `SELECT stan.id, cijena, ulica, klima, tv, ljubimci FROM stan, adresa, karakteristike, vlasnistvo WHERE adresa.id=stan.adresa_id AND stan.karakteristike_id=karakteristike.id AND vlasnistvo.stan_id=stan.id AND vlasnistvo.vlasnik_id=${vlasnik_id}`;
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        res.json(result);
+    });
+});
+
+// moji najmovi
+app.get("/moji_najmovi/:korisnik_id", (req, res) => {
+
+    const korisnik_id = req.params.korisnik_id;
+
+    let sql = `SELECT najam.stan_id, cijena, ulica FROM najam, stan, adresa WHERE najam.korisnik_id=${korisnik_id} AND stan.id=najam.stan_id AND stan.adresa_id=adresa.id`;
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        res.json(result);
     });
 });
 

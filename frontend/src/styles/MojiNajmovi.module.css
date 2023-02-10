@@ -1,0 +1,9 @@
+.popis {
+    display: flex;
+    flex-direction: row;
+    font-size: 10px;
+}
+
+.popis td {
+    border-right: 1px solid black;
+}

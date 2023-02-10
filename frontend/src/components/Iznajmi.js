@@ -11,9 +11,9 @@ const Iznajmi = () => {
     const [filtriranje, setFiltriranje] = useState(false);
 
     const ucitajNajmove = async () => {
-        const najmoviJSON = await (await fetch("/dobi_stanove")).json();
+        const najmovi_json = await (await fetch("/dobi_stanove")).json();
 
-        setNajmovi(najmoviJSON.map(najam => ({
+        setNajmovi(najmovi_json.map(najam => ({
             id: najam["id"],
             naslov: "kuća",
             cijena: najam["cijena"],
@@ -21,8 +21,7 @@ const Iznajmi = () => {
             tv: parseInt(najam["tv"]["data"][0]),
             klima: parseInt(najam["klima"]["data"][0]),
             ljubimci: parseInt(najam["ljubimci"]["data"][0]),
-        })
-        ));
+        })));
         setUcitano(true);
     }
 

@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import NajamCard from './NajamCard';
 import { KorisnikContext } from '../App';
 
 const Najam = () => {

@@ -45,6 +45,7 @@ const IzradaObjave = () => {
             broj_soba: sobe.length,
             broj_kuhinja: val.broj_kuhinja.value,
             broj_kupaona: val.broj_kupaona.value,
+            cijena: val.cijena.value,
             klima: val.klima.checked ? 1 : 0,
             tv: val.tv.checked ? 1 : 0,
             ljubimci: val.ljubimci.checked ? 1 : 0,
@@ -57,7 +58,7 @@ const IzradaObjave = () => {
         const karakteristike_id = await (await fetch(`/karakteristike/${stan["kvadratura"]}&${stan["broj_soba"]}&${stan["broj_kuhinja"]}&${stan["broj_kupaona"]}&${stan["klima"]}&${stan["tv"]}&${stan["ljubimci"]}`)).text();
 
         // upis stana
-        const stan_id = await (await fetch(`/stan/${adresa_id}&${karakteristike_id}&${1}&${Date.now()}&${0.99}`)).text();
+        const stan_id = await (await fetch(`/stan/${adresa_id}&${karakteristike_id}&${1}&${Date.now()}&${stan["cijena"]}`)).text();
         console.log("stan_id", stan_id)
         const vlasnistvo_id = await (await fetch(`/vlasnistvo/${stan_id}&${korisnik["id"]}&${1}`)).text();
 
@@ -93,6 +94,7 @@ const IzradaObjave = () => {
                         <Input name="kvadratura" label="Kvadratura (m2)" placeholder="Upišite kvadraturu" type="number" />
                         <Input name="broj_kuhinja" label="Broj kuhinja" placeholder="Upišite broj kuhinja" type="number" />
                         <Input name="broj_kupaona" label="Broj kupaona" placeholder="Upišite broj kupaona" type="number" />
+                        <Input name="cijena" label="Cijena" placeholder="Upišite cijenu" type="number" />
                         <Input name="klima" label="Klima" type="checkbox" />
                         <Input name="tv" label="TV" type="checkbox" />
                         <Input name="ljubimci" label="Ljubimci" type="checkbox" />

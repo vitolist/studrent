@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from '../styles/Prijava.module.css';
 import Input from './Input';
 import { KorisnikContext } from '../App';
+import Mapa from './mapa/Mapa';
 
 const Prijava = () => {
 
@@ -40,6 +41,7 @@ const Prijava = () => {
             <div className={styles.opis}>
             </div>
         </div>
+        // <Mapa />
     )
 }
 

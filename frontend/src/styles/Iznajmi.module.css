@@ -47,6 +47,10 @@
     margin-bottom: 20px;
 }
 
+.popis>div:last-child {
+    margin-bottom: 60px;
+}
+
 .popis::-webkit-scrollbar {
     width: 8px;
 }

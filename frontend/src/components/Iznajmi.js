@@ -1,14 +1,16 @@
-import { React, useEffect, useState } from 'react';
+import { React, useContext, useEffect, useState } from 'react';
+import { NajmoviContext } from '../App';
 import styles from '../styles/Iznajmi.module.css';
 import Input from './Input';
 import Najam from './NajamCard';
 
 const Iznajmi = () => {
 
-    const [najmovi, setNajmovi] = useState([]);
+    const [najmovi, setNajmovi] = useContext(NajmoviContext);
     const [ucitano, setUcitano] = useState(false);
     const [filter, setFilter] = useState({});
     const [filtriranje, setFiltriranje] = useState(false);
+    const [cijena, setCijena] = useState(500);
 
     const ucitajNajmove = async () => {
         const najmovi_json = await (await fetch("/dobi_stanove")).json();
@@ -44,8 +46,13 @@ const Iznajmi = () => {
         if (!filtriranje) { return true }
         if (najam["tv"] != filter["tv"]
             || najam["klima"] != filter["klima"]
-            || najam["ljubimci"] != filter["ljubimci"]) { return false; }
+            || najam["ljubimci"] != filter["ljubimci"]
+            || najam["cijena"] > cijena) { return false; }
         return true;
+    }
+
+    const cijenaChange = (e) => {
+        setCijena(e.target.value);
     }
 
     useEffect(() => {
@@ -77,7 +84,11 @@ const Iznajmi = () => {
 
                 <div className={styles.filter}>
                     <form onSubmit={postaviFilter} action="">
-                        <Input name="cijena" label="Cijena" type="range" />
+                        <div style={{ display: "flex", flexDirection: "column" }}>
+                            <label htmlFor="cijena">Cijena do: {cijena} €/mj.</label>
+                            <input onChange={cijenaChange} type="range" min={0} max={1000} defaultValue={500} name='cijena' id='cijena' />
+                        </div>
+                        {/* <Input name="cijena" label="Cijena" type="range" /> */}
                         <Input name="klima" label="Klima" type="checkbox" />
                         <Input name="tv" label="TV" type="checkbox" />
                         <Input name="ljubimci" label="Ljubimci" type="checkbox" />

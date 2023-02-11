@@ -3,12 +3,13 @@ import { Outlet } from 'react-router-dom';
 import styles from '../styles/Main.module.css';
 import Iznajmi from './Iznajmi';
 import Mapa from './mapa/Mapa';
+import MapComponent from './MapComponent';
 
 const Main = () => {
 
     return (
         <div className={styles.content}>
-            <Mapa />
+            <MapComponent />
             <Outlet />
             {/* <Iznajmi /> */}
         </div>

@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom';
 import styles from '../styles/IzradaObjave.module.css';
 import Input from './Input';
 import { KorisnikContext } from '../App';
+import MapComponent from './MapComponent';
+import MapPrijava from './MapPrijava';
 
 const IzradaObjave = () => {
     const [korisnik, setKorisnik] = useContext(KorisnikContext);
+    const [lon, setLon] = useState(null);
+    const [lat, setLat] = useState(null);
 
     const [sobe, setSobe] = useState([]);
     const sobeInput = useRef([0, 0, 0, 0, 0]);
@@ -38,6 +42,8 @@ const IzradaObjave = () => {
             grad_id: 1,
             ulica: val.ulica.value,
             broj: val.broj.value,
+            lon: val.lon.value,
+            lat: val.lat.value,
         };
 
         const stan = {
@@ -52,7 +58,7 @@ const IzradaObjave = () => {
         };
 
         // upis adrese
-        const adresa_id = await (await fetch(`/adresa/${adresa["grad_id"]}&${adresa["ulica"]}&${adresa["broj"]}`)).text();
+        const adresa_id = await (await fetch(`/adresa/${adresa["grad_id"]}&${adresa["ulica"]}&${adresa["broj"]}&${adresa["lat"]}&${adresa["lon"]}`)).text();
 
         // upis karakteristika
         const karakteristike_id = await (await fetch(`/karakteristike/${stan["kvadratura"]}&${stan["broj_soba"]}&${stan["broj_kuhinja"]}&${stan["broj_kupaona"]}&${stan["klima"]}&${stan["tv"]}&${stan["ljubimci"]}`)).text();
@@ -86,8 +92,14 @@ const IzradaObjave = () => {
         // }
     }
 
+    const onMapClick = (lon, lat) => {
+        setLon(lon);
+        setLat(lat);
+    }
+
     return (
         <div className={styles.content}>
+            <MapPrijava onMapClick={onMapClick} />
             <div className={styles.forma}>
                 <form onSubmit={handleSubmit} action="">
                     <div>
@@ -105,6 +117,9 @@ const IzradaObjave = () => {
                         <Input name="grad" label="Grad" placeholder="Upišite naziv grada" type="text" />
                         <Input name="ulica" label="Ulica" placeholder="Upišite ulicu" type="text" />
                         <Input name="broj" label="Kućni broj" placeholder="Upišite kućni broj" type="number" />
+
+                        <Input value={lon} name="lon" label="Longitude" placeholder="Upišite longitude" type="number" step={0.00000000000001} />
+                        <Input value={lat} name="lat" label="Latitude" placeholder="Upišite latitude" type="number" step={0.00000000000001} />
                     </div>
                     <div>
                         <button type='button' onClick={dodajSobu}>dodaj sobu</button>

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../styles/Header.module.css'
 import { KorisnikContext } from '../App';
+import ikona from "../icons/ikona.svg";
 
 const Header = () => {
 
@@ -17,6 +18,8 @@ const Header = () => {
 
     return (
         <header>
+
+            <img src={ikona} alt="" style={{ height: "28px", marginRight: "4px" }} />
 
             <h1>
                 StudRent

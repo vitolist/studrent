@@ -36,7 +36,7 @@ const Header = () => {
                     onClick={() => setIndex(1)} to={"moji_najmovi"}>Moji najmovi</Link>
 
                 <Link style={index == 2 ? selectedIndex : notSelected}
-                    onClick={() => setIndex(2)} to={""}>Chat</Link>
+                    onClick={() => setIndex(2)} to={"chat"}>Chat</Link>
             </nav>
             <Link to={"/prijava"}><div className={styles.profilna}></div></Link>
             <span>ime: {korisnik["ime"]}</span>

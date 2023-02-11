@@ -276,6 +276,15 @@ app.get("/adresa_stana/:id", (req, res) => {
     });
 });
 
+// stanari
+app.get("/stanari/:stan_id", (req, res) => {
+    let sql = `SELECT * FROM najam, korisnik, stan WHERE najam.stan_id=${req.params.stan_id} AND najam.korisnik_id=korisnik.id AND stan.id=najam.stan_id`;
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        res.json(result);
+    });
+});
+
 const PORT = 5000;
 
 app.listen(PORT, () => { console.log(`server radi na portu ${PORT}`); });

@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useMemo, useState } from "react";
 import { BrowserRouter, Link, Route, Routes, Navigate, redirect } from "react-router-dom";
+import Chat from "./components/Chat";
 import Iznajmi from "./components/Iznajmi";
 import IzradaObjave from "./components/IzradaObjave";
 import Main from "./components/Main";
@@ -53,6 +54,7 @@ function App() {
                 </Route>
                 <Route path="moji_najmovi" element={<MojiNajmovi />} />
                 <Route path="izrada_objave" element={<IzradaObjave />} />
+                <Route path="chat" element={<Chat />} />
               </Route>
               <Route path="/prijava" element={<Prijava />} />
               <Route path="/registracija" element={<Registracija />} />

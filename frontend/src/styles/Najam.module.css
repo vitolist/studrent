@@ -5,17 +5,20 @@
 }
 
 .content button {
-    height: 28px;
-    width: 256px;
+    margin: auto 10px 24px 0;
+    height: 32px;
+    width: auto;
     border-radius: 5px;
-    background-color: #ADD7F6;
+    background-color: #2667FF;
+    font-weight: 600;
+    color: white;
     outline: none;
     border: none;
 }
 
 .content button:hover {
     cursor: pointer;
-    background-color: #8ec8f2;
+    background-color: #1e5ae6;
 }
 
 .content p {
@@ -43,4 +46,9 @@
     border-radius: 10px;
     font-size: 14px;
     font-weight: 500;
+}
+
+.stanari {
+    display: flex;
+    flex-direction: column;
 }

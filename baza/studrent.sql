@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 10, 2023 at 08:56 PM
+-- Generation Time: Feb 11, 2023 at 03:53 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -31,53 +31,68 @@ CREATE TABLE `adresa` (
   `id` int(11) NOT NULL,
   `grad_id` int(11) DEFAULT NULL,
   `ulica` varchar(255) DEFAULT NULL,
-  `broj` int(11) DEFAULT NULL
+  `broj` int(11) DEFAULT NULL,
+  `lon` float NOT NULL,
+  `lat` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `adresa`
 --
 
-INSERT INTO `adresa` (`id`, `grad_id`, `ulica`, `broj`) VALUES
-(131, 1, '231', 231),
-(132, 1, '231', 231),
-(133, 1, 'noakoca', 34),
-(134, 1, 'vukovarska', 34),
-(135, 1, 'sportska', 34),
-(136, 1, 'sportska', 34),
-(137, 1, 'frankopanska', 34),
-(138, 1, 'vukovarska', 18),
-(139, 1, 'vukovarska', 18),
-(140, 1, 'vukovarska', 18),
-(141, 1, 'vukovarska', 18),
-(142, 1, '123', 123),
-(143, 1, '123', 123),
-(144, 1, '123', 23),
-(145, 1, '123', 23),
-(146, 1, '1', 1),
-(147, 1, '1', 1),
-(148, 1, '1', 1),
-(149, 1, '1', 1),
-(150, 1, '1', 1),
-(151, 1, '1', 1),
-(152, 1, '1', 1),
-(153, 1, '1', 1),
-(154, 1, '1', 1),
-(155, 1, '1', 1),
-(156, 1, '1', 1),
-(157, 1, '1', 1),
-(158, 1, '1', 1),
-(159, 1, '1', 1),
-(160, 1, '1', 1),
-(161, 1, '1', 1),
-(162, 1, '1', 1),
-(163, 1, '1', 1),
-(164, 1, '1', 1),
-(165, 1, '1', 1),
-(166, 1, '1', 1),
-(167, 1, 'Ul dr Ivana Novaka', 30),
-(168, 1, 'proba', 34),
-(169, 1, '123', 123);
+INSERT INTO `adresa` (`id`, `grad_id`, `ulica`, `broj`, `lon`, `lat`) VALUES
+(131, 1, '231', 231, 0, 0),
+(132, 1, '231', 231, 0, 0),
+(133, 1, 'noakoca', 34, 0, 0),
+(134, 1, 'vukovarska', 34, 0, 0),
+(135, 1, 'sportska', 34, 0, 0),
+(136, 1, 'sportska', 34, 0, 0),
+(137, 1, 'frankopanska', 34, 0, 0),
+(138, 1, 'vukovarska', 18, 0, 0),
+(139, 1, 'vukovarska', 18, 0, 0),
+(140, 1, 'vukovarska', 18, 0, 0),
+(141, 1, 'vukovarska', 18, 0, 0),
+(142, 1, '123', 123, 0, 0),
+(143, 1, '123', 123, 0, 0),
+(144, 1, '123', 23, 0, 0),
+(145, 1, '123', 23, 0, 0),
+(146, 1, '1', 1, 0, 0),
+(147, 1, '1', 1, 0, 0),
+(148, 1, '1', 1, 0, 0),
+(149, 1, '1', 1, 0, 0),
+(150, 1, '1', 1, 0, 0),
+(151, 1, '1', 1, 0, 0),
+(152, 1, '1', 1, 0, 0),
+(153, 1, '1', 1, 0, 0),
+(154, 1, '1', 1, 0, 0),
+(155, 1, '1', 1, 0, 0),
+(156, 1, '1', 1, 0, 0),
+(157, 1, '1', 1, 0, 0),
+(158, 1, '1', 1, 0, 0),
+(159, 1, '1', 1, 0, 0),
+(160, 1, '1', 1, 0, 0),
+(161, 1, '1', 1, 0, 0),
+(162, 1, '1', 1, 0, 0),
+(163, 1, '1', 1, 0, 0),
+(164, 1, '1', 1, 0, 0),
+(165, 1, '1', 1, 0, 0),
+(166, 1, '1', 1, 0, 0),
+(167, 1, 'Ul dr Ivana Novaka', 30, 0, 0),
+(168, 1, 'proba', 34, 0, 0),
+(169, 1, '123', 123, 0, 0),
+(170, 1, '123', 123, 0, 0),
+(171, 1, '123', 123, 0, 0),
+(172, 1, '123', 123, 0, 0),
+(173, 1, '123', 123, 0, 0),
+(174, 1, '123', 123, 0, 0),
+(175, 1, '123', 46, 46, 16),
+(176, 1, 'Novakova', 30, 46.3828, 16.43),
+(177, 1, 'Novakova', 30, 16.43, 46.3828),
+(178, 1, 'jezero', 9, 16.4128, 46.3146),
+(179, 1, 'jezero', 4, 16.4241, 46.3152),
+(180, 1, 'jezero', 4, 16.4241, 46.3152),
+(181, 1, 'varazs', 4, 46.3129, 16.423),
+(182, 1, 'New York', 7, 40.7066, -73.9673);
 
 -- --------------------------------------------------------
 
@@ -173,7 +188,20 @@ INSERT INTO `karakteristike` (`id`, `kvadratura`, `broj_soba`, `broj_kuhinja`, `
 (99, 1, 3, 1, 1, b'1', b'1', b'1'),
 (100, 75, 0, 1, 1, b'1', b'1', b'0'),
 (101, 123, 0, 123, 123, b'0', b'0', b'1'),
-(102, 123, 0, 123, 123, b'0', b'0', b'0');
+(102, 123, 0, 123, 123, b'0', b'0', b'0'),
+(103, 213, 0, 123, 123, b'0', b'0', b'0'),
+(104, 123, 0, 123, 123, b'0', b'0', b'0'),
+(105, 123, 0, 123, 123, b'0', b'0', b'0'),
+(106, 123, 0, 123, 123, b'0', b'0', b'0'),
+(107, 123, 0, 123, 123, b'0', b'0', b'0'),
+(108, 123, 0, 123, 123, b'0', b'1', b'0'),
+(109, 75, 0, 1, 1, b'1', b'1', b'0'),
+(110, 75, 0, 1, 1, b'1', b'1', b'0'),
+(111, 123, 0, 123, 123, b'1', b'1', b'0'),
+(112, 123, 0, 123, 123, b'1', b'1', b'0'),
+(113, 123, 0, 123, 123, b'1', b'1', b'0'),
+(114, 123, 0, 23, 123, b'0', b'0', b'1'),
+(115, 123, 0, 123, 123, b'1', b'0', b'0');
 
 -- --------------------------------------------------------
 
@@ -200,9 +228,7 @@ CREATE TABLE `korisnik` (
 --
 
 INSERT INTO `korisnik` (`id`, `ime`, `prezime`, `username`, `lozinka`, `broj_telefona`, `spol`, `datum_rodenja`, `skola_id`, `profilna_id`, `email`) VALUES
-(33, 'Vito', 'List', 'vitolist', '8aa87050051efe26091a13dbfdf901c6', '12345', b'1', '2005-11-07', 5, 0, NULL),
-(34, 'Vito', 'lisr', 'vitoo', '8aa87050051efe26091a13dbfdf901c6', '2345', b'1', '2023-03-02', 5, 0, 'vito.list2005@gmail.com'),
-(35, 'vito', 'list', 'mirko', '13592f2caf86af30572a825229a2a8dc', '12312', b'1', '2023-02-09', 5, 0, 'mrko');
+(33, 'Vito', 'List', 'vitolist', '8aa87050051efe26091a13dbfdf901c6', '12345', b'1', '2005-11-07', 5, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -397,7 +423,18 @@ INSERT INTO `stan` (`id`, `adresa_id`, `karakteristike_id`, `aktivan`, `vrijeme_
 (102, 166, 99, b'1', '0000-00-00 00:00:00', 0.99),
 (103, 167, 100, b'1', '0000-00-00 00:00:00', 0.99),
 (104, 168, 101, b'1', '0000-00-00 00:00:00', 0.99),
-(105, 169, 102, b'1', '0000-00-00 00:00:00', 0.99);
+(105, 169, 102, b'1', '0000-00-00 00:00:00', 0.99),
+(106, 170, 103, b'1', '0000-00-00 00:00:00', 456),
+(107, 171, 104, b'1', '0000-00-00 00:00:00', 4566),
+(108, 172, 105, b'1', '0000-00-00 00:00:00', 4566),
+(109, 173, 106, b'1', '0000-00-00 00:00:00', 4566),
+(110, 174, 107, b'1', '0000-00-00 00:00:00', 4566),
+(111, 175, 108, b'1', '0000-00-00 00:00:00', 123),
+(112, 176, 109, b'1', '0000-00-00 00:00:00', 199),
+(113, 177, 110, b'1', '0000-00-00 00:00:00', 199),
+(114, 180, 113, b'1', '0000-00-00 00:00:00', 777),
+(115, 181, 114, b'1', '0000-00-00 00:00:00', 555),
+(116, 182, 115, b'1', '0000-00-00 00:00:00', 12334);
 
 -- --------------------------------------------------------
 
@@ -489,7 +526,18 @@ INSERT INTO `vlasnistvo` (`id`, `stan_id`, `vlasnik_id`, `aktivno`) VALUES
 (92, 102, 33, b'1'),
 (93, 103, 33, b'1'),
 (94, 104, 33, b'1'),
-(95, 105, 35, b'1');
+(95, 105, 35, b'1'),
+(96, 106, 33, b'1'),
+(97, 107, 33, b'1'),
+(98, 108, 33, b'1'),
+(99, 109, 33, b'1'),
+(100, 110, 33, b'1'),
+(101, 111, 33, b'1'),
+(102, 112, 0, b'1'),
+(103, 113, 0, b'1'),
+(104, 114, 33, b'1'),
+(105, 115, 33, b'1'),
+(106, 116, 33, b'1');
 
 --
 -- Indexes for dumped tables
@@ -605,7 +653,7 @@ ALTER TABLE `vlasnistvo`
 -- AUTO_INCREMENT for table `adresa`
 --
 ALTER TABLE `adresa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
 
 --
 -- AUTO_INCREMENT for table `chat`
@@ -623,7 +671,7 @@ ALTER TABLE `grad`
 -- AUTO_INCREMENT for table `karakteristike`
 --
 ALTER TABLE `karakteristike`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- AUTO_INCREMENT for table `korisnik`
@@ -683,7 +731,7 @@ ALTER TABLE `sobe`
 -- AUTO_INCREMENT for table `stan`
 --
 ALTER TABLE `stan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT for table `stanari`
@@ -701,7 +749,7 @@ ALTER TABLE `tip_sobe`
 -- AUTO_INCREMENT for table `vlasnistvo`
 --
 ALTER TABLE `vlasnistvo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

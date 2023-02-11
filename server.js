@@ -93,13 +93,15 @@ app.get("/prijava/:username&:lozinka", (req, res) => {
 });
 
 // dodaj adresu
-app.get("/adresa/:grad_id&:ulica&:broj", (req, res) => {
+app.get("/adresa/:grad_id&:ulica&:broj&:lon&:lat", (req, res) => {
     const r = req.params;
 
     const post = {
         grad_id: r.grad_id,
         ulica: r.ulica,
-        broj: r.broj
+        broj: r.broj,
+        lon: parseFloat(r.lon),
+        lat: parseFloat(r.lat)
     }
 
     let sql = "INSERT INTO adresa SET ?";
@@ -249,6 +251,15 @@ app.get("/moji_najmovi/:korisnik_id", (req, res) => {
     const korisnik_id = req.params.korisnik_id;
 
     let sql = `SELECT najam.stan_id, cijena, ulica FROM najam, stan, adresa WHERE najam.korisnik_id=${korisnik_id} AND stan.id=najam.stan_id AND stan.adresa_id=adresa.id`;
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        res.json(result);
+    });
+});
+
+// koordinate
+app.get("/koordinate", (req, res) => {
+    let sql = "SELECT stan.id, stan.adresa_id, adresa.lon, adresa.lat FROM stan, adresa WHERE stan.adresa_id=adresa.id";
     db.query(sql, (err, result) => {
         if (err) throw err;
         res.json(result);

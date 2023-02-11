@@ -1,0 +1,46 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.content button {
+    height: 28px;
+    width: 256px;
+    border-radius: 5px;
+    background-color: #ADD7F6;
+    outline: none;
+    border: none;
+}
+
+.content button:hover {
+    cursor: pointer;
+    background-color: #8ec8f2;
+}
+
+.content p {
+    margin: 12px, 0;
+    color: #2667FF;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.ulica {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #979797;
+}
+
+.cijena {
+    width: fit-content;
+    margin-top: auto;
+    padding: 2px 6px;
+    font-size: 18px;
+    background-color: #E4F7E8;
+    color: #136624;
+    /* border: solid 1.5px #89B291; */
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}

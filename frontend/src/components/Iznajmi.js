@@ -19,7 +19,9 @@ const Iznajmi = () => {
             id: najam["id"],
             naslov: "kuća",
             cijena: najam["cijena"],
+            adresa_id: najam["adresa_id"],
             ulica: najam["ulica"],
+            grad: najam["grad"],
             tv: parseInt(najam["tv"]["data"][0]),
             klima: parseInt(najam["klima"]["data"][0]),
             ljubimci: parseInt(najam["ljubimci"]["data"][0]),
@@ -70,8 +72,9 @@ const Iznajmi = () => {
                     {ucitano ?
                         najmovi.map((najam) =>
                         (filtriraj(najam) && <Najam
+                            adresa_id={najam["adresa_id"]}
                             najam_id={najam["id"]}
-                            naslov={najam["naslov"]}
+                            naslov={najam["grad"]}
                             ulica={najam["ulica"]}
                             cijena={najam["cijena"]}
                             key={parseInt(najam["id"])}

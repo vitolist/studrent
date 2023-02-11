@@ -93,12 +93,13 @@ app.get("/prijava/:username&:lozinka", (req, res) => {
 });
 
 // dodaj adresu
-app.get("/adresa/:grad_id&:ulica&:broj&:lon&:lat", (req, res) => {
+app.get("/adresa/:grad_id&:ulica&:grad&:broj&:lon&:lat", (req, res) => {
     const r = req.params;
 
     const post = {
         grad_id: r.grad_id,
         ulica: r.ulica,
+        grad: r.grad,
         broj: r.broj,
         lon: parseFloat(r.lon),
         lat: parseFloat(r.lat)
@@ -208,7 +209,7 @@ app.get("/tip_sobe/:soba_id&:kapacitet&:popunjenost", (req, res) => {
 // dobi stanove
 app.get("/dobi_stanove", (req, res) => {
 
-    let sql = "SELECT stan.id, cijena, ulica, klima, tv, ljubimci FROM stan, adresa, karakteristike WHERE adresa.id=stan.adresa_id AND stan.karakteristike_id=karakteristike.id AND stan.aktivan=1";
+    let sql = "SELECT stan.id, adresa.id AS 'adresa_id', cijena, ulica, grad, klima, tv, ljubimci FROM stan, adresa, karakteristike WHERE adresa.id=stan.adresa_id AND stan.karakteristike_id=karakteristike.id AND stan.aktivan=1";
     db.query(sql, (err, result) => {
         if (err) throw err;
         res.json(result);
@@ -260,6 +261,15 @@ app.get("/moji_najmovi/:korisnik_id", (req, res) => {
 // koordinate
 app.get("/koordinate", (req, res) => {
     let sql = "SELECT stan.id, stan.adresa_id, adresa.lon, adresa.lat FROM stan, adresa WHERE stan.adresa_id=adresa.id";
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        res.json(result);
+    });
+});
+
+// adresa stana
+app.get("/adresa_stana/:id", (req, res) => {
+    let sql = `SELECT * FROM adresa WHERE id=${req.params.id}`;
     db.query(sql, (err, result) => {
         if (err) throw err;
         res.json(result);

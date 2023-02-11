@@ -39,7 +39,7 @@ const Registracija = () => {
                     <Input name="prezime" placeholder="Upišite prezime" label="Prezime" />
                     <Input name="username" placeholder="Upišite username" label="Korisničko ime" />
                     <Input name="email" placeholder="Upišite email" label="Email" />
-                    <Input name="lozinka" placeholder="Upišite lozinku" label="Lozinka" />
+                    <Input type={"password"} name="lozinka" placeholder="Upišite lozinku" label="Lozinka" />
                     <Input name="broj_telefona" placeholder="Upišite broj telefona" label="Broj telefona" type="number" />
 
                     <div className={styles.dodatni}>

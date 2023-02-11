@@ -41,6 +41,7 @@ const IzradaObjave = () => {
         const adresa = {
             grad_id: 1,
             ulica: val.ulica.value,
+            grad: val.grad.value,
             broj: val.broj.value,
             lon: val.lon.value,
             lat: val.lat.value,
@@ -58,7 +59,7 @@ const IzradaObjave = () => {
         };
 
         // upis adrese
-        const adresa_id = await (await fetch(`/adresa/${adresa["grad_id"]}&${adresa["ulica"]}&${adresa["broj"]}&${adresa["lat"]}&${adresa["lon"]}`)).text();
+        const adresa_id = await (await fetch(`/adresa/${adresa["grad_id"]}&${adresa["ulica"]}&${adresa["grad"]}&${adresa["broj"]}&${adresa["lat"]}&${adresa["lon"]}`)).text();
 
         // upis karakteristika
         const karakteristike_id = await (await fetch(`/karakteristike/${stan["kvadratura"]}&${stan["broj_soba"]}&${stan["broj_kuhinja"]}&${stan["broj_kupaona"]}&${stan["klima"]}&${stan["tv"]}&${stan["ljubimci"]}`)).text();

@@ -14,7 +14,8 @@ export const NajmoviContext = createContext();
 
 function App() {
 
-  const [korisnik, setKorisnik] = useState({});
+  const [korisnik, setKorisnik] = useState(JSON.parse(localStorage.getItem('korisnik')) || {});
+
   const [najmovi, setNajmovi] = useState([]);
 
   // useEffect(() => {
@@ -48,7 +49,7 @@ function App() {
               <Route path="/" element={<Pocetna />} >
                 <Route path="" element={<Main />} >
                   <Route path="" element={<Iznajmi />} />
-                  <Route path="najam/:stan_id" element={<Najam />} />
+                  <Route path="najam/:stan_id/:adresa_id" element={<Najam />} />
                 </Route>
                 <Route path="moji_najmovi" element={<MojiNajmovi />} />
                 <Route path="izrada_objave" element={<IzradaObjave />} />

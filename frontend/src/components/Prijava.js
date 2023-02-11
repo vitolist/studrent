@@ -22,6 +22,7 @@ const Prijava = () => {
         console.log(korisnikJSON);
 
         setKorisnik(korisnikJSON[0]);
+        localStorage.setItem('korisnik', JSON.stringify(korisnikJSON[0]));
         console.log(korisnikJSON[0]);
         navigate("/");
     }
@@ -32,7 +33,7 @@ const Prijava = () => {
                 <Link to={"/"} ><h1>StudRent</h1></Link>
                 <form onSubmit={handleSubmit} action="">
                     <Input name="username" placeholder="Upišite username" label="Username" />
-                    <Input name="lozinka" placeholder="Upišite lozinku" label="Lozinka" />
+                    <Input type={"password"} name="lozinka" placeholder="Upišite lozinku" label="Lozinka" />
 
                     <input type="submit" value="Prijavi se" />
                 </form>

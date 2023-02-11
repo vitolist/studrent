@@ -2,12 +2,12 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../styles/NajamCard.module.css'
 
-const NajamCard = ({ najam_id, naslov, ulica, cijena, karakteristike }) => {
+const NajamCard = ({ najam_id, naslov, ulica, cijena, karakteristike, adresa_id }) => {
 
     const navigate = useNavigate();
 
     const otvoriNajam = () => {
-        navigate(`najam/${najam_id}`)
+        navigate(`najam/${najam_id}/${adresa_id}`)
     }
 
     return (

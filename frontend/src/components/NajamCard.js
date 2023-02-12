@@ -6,6 +6,7 @@ const NajamCard = ({ najam_id, naslov, ulica, cijena, karakteristike, adresa_id 
 
     const navigate = useNavigate();
 
+    // otvara tab s opisom najma
     const otvoriNajam = () => {
         navigate(`najam/${najam_id}/${adresa_id}`)
     }
@@ -21,7 +22,7 @@ const NajamCard = ({ najam_id, naslov, ulica, cijena, karakteristike, adresa_id 
                 </div>
                 <span className={styles.cijena}>{cijena} €/mj.</span>
             </div>
-            
+
         </div>
     )
 }

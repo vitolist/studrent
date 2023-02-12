@@ -17,6 +17,7 @@ const Pocetna = () => {
     const navigate = useNavigate();
     const [korisnik, setKorisnik] = useContext(KorisnikContext);
 
+    // uvjetuje nas da se prijavimo ako nismo vec prijavljeni
     useEffect(() => {
         if (!provjera_prijave(korisnik)) {
             navigate("/prijava");

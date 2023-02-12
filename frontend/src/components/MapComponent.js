@@ -19,6 +19,7 @@ const MapComponent = () => {
     const [najmovi, setNajmovi] = useContext(NajmoviContext);
     const [markeri, serMarkeri] = useState([]);
 
+    // dohvaca sve adrese iz baze te ih prikazuje na karti kao pinove
     const dobiAdrese = async () => {
         const adrese_json = await (await fetch("/koordinate")).json();
         serMarkeri(adrese_json.map(adresa => new VectorLayer({

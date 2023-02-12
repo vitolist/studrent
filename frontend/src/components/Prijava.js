@@ -8,8 +8,10 @@ import Mapa from './mapa/Mapa';
 const Prijava = () => {
 
     const [korisnik, setKorisnik] = useContext(KorisnikContext);
+    const [greska, setGreska] = useState("");
     const navigate = useNavigate();
 
+    // funkcija koja se pokrece kada submitamo formu za prijavu
     const handleSubmit = async (e) => {
         e.preventDefault();
         const podaci = {
@@ -17,14 +19,18 @@ const Prijava = () => {
             lozinka: e.target.elements.lozinka.value,
         };
 
-
         const korisnikJSON = await (await fetch(`/prijava/${podaci["username"]}&${podaci["lozinka"]}`)).json();
         console.log(korisnikJSON);
 
-        setKorisnik(korisnikJSON[0]);
-        localStorage.setItem('korisnik', JSON.stringify(korisnikJSON[0]));
-        console.log(korisnikJSON[0]);
-        navigate("/");
+        // provjerava ako je korisnicko ime ili lozinka krivo
+        if (typeof korisnikJSON[0] !== "undefined") {
+            setKorisnik(korisnikJSON[0]);
+            localStorage.setItem('korisnik', JSON.stringify(korisnikJSON[0]));
+            console.log(korisnikJSON[0]);
+            navigate("/");
+        } else {
+            setGreska("Neispravno korisničko ime ili lozinka");
+        }
     }
 
     return (
@@ -37,6 +43,7 @@ const Prijava = () => {
 
                     <input type="submit" value="Prijavi se" />
                 </form>
+                <span>{greska}</span>
                 <Link className={styles.link} to={"/registracija"}>Registracija</Link>
             </div>
             <div className={styles.opis}>

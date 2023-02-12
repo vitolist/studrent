@@ -12,6 +12,7 @@ const Najam = () => {
     const [stan, setStan] = useState({});
     const [stanari, setStanari] = useState([]);
 
+    // zapisuje u bazu da smo iznajmili odredeni stan
     const iznajmi = async (e) => {
         e.preventDefault();
         const val = e.target.elements;
@@ -29,6 +30,7 @@ const Najam = () => {
         }, 1000);
     }
 
+    // dohvaca podatke o stanu
     const dobiAdresu = async () => {
         const stan_id = params.stan_id;
         const stan_json = await (await fetch(`/o_stanu/${stan_id}`)).json();
@@ -36,6 +38,7 @@ const Najam = () => {
         // console.log(stan_json[0]);
     }
 
+    // dohvaca vec postojece stanare u stanu
     const dobiStanare = async () => {
         const stan_id = params.stan_id;
         const stanari_json = await (await fetch(`/stanari/${stan_id}`)).json();
@@ -52,7 +55,6 @@ const Najam = () => {
         <div className={styles.content}>
             <h1>{stan["grad"]}</h1>
             <span className={styles.ulica}>{stan["ulica"]} {stan["broj"]}</span>
-            <span></span>
             <div>
                 <h3>Stanari: </h3>
                 <div className={styles.stanari}>

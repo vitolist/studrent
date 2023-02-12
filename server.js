@@ -239,7 +239,7 @@ app.get("/moji_stanovi/:vlasnik_id", (req, res) => {
 
     const vlasnik_id = req.params.vlasnik_id;
 
-    let sql = `SELECT stan.id, cijena, ulica, klima, tv, ljubimci FROM stan, adresa, karakteristike, vlasnistvo WHERE adresa.id=stan.adresa_id AND stan.karakteristike_id=karakteristike.id AND vlasnistvo.stan_id=stan.id AND vlasnistvo.vlasnik_id=${vlasnik_id}`;
+    let sql = `SELECT stan.id, grad, cijena, ulica, klima, tv, ljubimci FROM stan, adresa, karakteristike, vlasnistvo WHERE adresa.id=stan.adresa_id AND stan.karakteristike_id=karakteristike.id AND vlasnistvo.stan_id=stan.id AND vlasnistvo.vlasnik_id=${vlasnik_id}`;
     db.query(sql, (err, result) => {
         if (err) throw err;
         res.json(result);
@@ -251,7 +251,7 @@ app.get("/moji_najmovi/:korisnik_id", (req, res) => {
 
     const korisnik_id = req.params.korisnik_id;
 
-    let sql = `SELECT najam.stan_id, cijena, ulica FROM najam, stan, adresa WHERE najam.korisnik_id=${korisnik_id} AND stan.id=najam.stan_id AND stan.adresa_id=adresa.id`;
+    let sql = `SELECT najam.stan_id, grad, cijena, ulica FROM najam, stan, adresa WHERE najam.korisnik_id=${korisnik_id} AND stan.id=najam.stan_id AND stan.adresa_id=adresa.id`;
     db.query(sql, (err, result) => {
         if (err) throw err;
         res.json(result);
@@ -288,6 +288,14 @@ app.get("/stanari/:stan_id", (req, res) => {
 // podaci o stanu
 app.get("/o_stanu/:stan_id", (req, res) => {
     let sql = `SELECT *, stan.adresa_id, stan.karakteristike_id FROM adresa, karakteristike, stan WHERE stan.adresa_id=adresa.id AND stan.karakteristike_id=karakteristike.id AND stan.id=${req.params.stan_id}`;
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        res.json(result);
+    });
+});
+
+app.get("/q/:stan_id", (req, res) => {
+    let sql = `SELECT *, vlasnistvo.vlasnik_id FROM korisnik, vlasnistvo WHERE korisnik.id=vlasnik_id AND stan_id=${req.params.stan_id};`;
     db.query(sql, (err, result) => {
         if (err) throw err;
         res.json(result);

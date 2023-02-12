@@ -18,6 +18,7 @@ const MapPrijava = ({ onMapClick }) => {
     const [lon, setLon] = useState(0);
     const [lat, setLat] = useState(0);
 
+    // izraduje mapu koja se koristi kod izrade najma, opcija dodavanja koordinata prilikom pritiska na mapu
     const napraviMapu = () => {
         const vectorSource = new VectorSource();
         const map = new Map({

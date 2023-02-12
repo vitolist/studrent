@@ -5,6 +5,7 @@ import Input from './Input';
 
 const Registracija = () => {
 
+    // pokrece se prilikom submitanja forme, zapisuje podatke o korisniku u bazu
     const handleSubmit = async (e) => {
         e.preventDefault();
         const val = e.target.elements;

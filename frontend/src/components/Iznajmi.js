@@ -12,6 +12,7 @@ const Iznajmi = () => {
     const [filtriranje, setFiltriranje] = useState(false);
     const [cijena, setCijena] = useState(500);
 
+    // ucitavamo dostupne najmove
     const ucitajNajmove = async () => {
         const najmovi_json = await (await fetch("/dobi_stanove")).json();
 
@@ -29,6 +30,7 @@ const Iznajmi = () => {
         setUcitano(true);
     }
 
+    // postavlja opcija filtera
     const postaviFilter = (e) => {
         e.preventDefault();
         const val = e.target.elements;
@@ -44,6 +46,7 @@ const Iznajmi = () => {
         setFiltriranje(true);
     }
 
+    // provjerava svaki element najma zadovoljava uvjete filtra
     const filtriraj = (najam) => {
         if (!filtriranje) { return true }
         if (najam["tv"] != filter["tv"]
@@ -53,10 +56,12 @@ const Iznajmi = () => {
         return true;
     }
 
+    // ispis cijene kada se slider pomakne
     const cijenaChange = (e) => {
         setCijena(e.target.value);
     }
 
+    // funkcija useEffect poziva se kada se komponenta rendera
     useEffect(() => {
         ucitajNajmove();
     }, []);
@@ -69,6 +74,7 @@ const Iznajmi = () => {
 
             <div className={styles.pretraga}>
                 <div className={styles.popis}>
+                    {/* prikazivanje svakog najma iz liste kao zasebnu Najam komponentu */}
                     {ucitano ?
                         najmovi.map((najam) =>
                         (filtriraj(najam) && <Najam

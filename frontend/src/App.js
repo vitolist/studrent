@@ -10,6 +10,7 @@ import Pocetna from "./components/Pocetna";
 import Prijava from "./components/Prijava";
 import Registracija from "./components/Registracija";
 
+// context varijable nam sluze da im mozemo pristupiti u bilo kojem dijelu aplikacije
 export const KorisnikContext = createContext();
 export const NajmoviContext = createContext();
 export const OdabraniNajamContext = createContext();
@@ -21,27 +22,7 @@ function App() {
   const [najmovi, setNajmovi] = useState([]);
   const [odabraniNajam, setOdabraniNajam] = useState([]);
 
-  // useEffect(() => {
-  //   setKorisnik({
-  //     "id": 33,
-  //     "ime": "Vito",
-  //     "prezime": "List",
-  //     "username": "vitolist",
-  //     "lozinka": "8aa87050051efe26091a13dbfdf901c6",
-  //     "broj_telefona": "12345",
-  //     "spol": {
-  //       "type": "Buffer",
-  //       "data": [
-  //         1
-  //       ]
-  //     },
-  //     "datum_rodenja": "2005-11-06T23:00:00.000Z",
-  //     "skola_id": 5,
-  //     "profilna_id": 0,
-  //     "email": null
-  //   });
-  // }, [])
-
+  // osnovna struktura aplikacije, komponenta Browser odreduje rute
   return (
     <div className="App">
       <KorisnikContext.Provider value={[korisnik, setKorisnik]}>

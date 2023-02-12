@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from '../styles/Header.module.css'
 import { KorisnikContext } from '../App';
 import ikona from "../icons/ikona.svg";
@@ -9,6 +9,8 @@ const Header = () => {
     const [korisnik, setKorisnik] = useContext(KorisnikContext);
     const [index, setIndex] = useState(0);
 
+    const navigate = useNavigate();
+
     const selectedIndex = { "fontWeight": "700", "color": "#2667FF", "fontSize": "20px" };
     const notSelected = { "margin": "0 12px", "backgroundColor": "transparent", "outline": "none", "border": "none", "cursor": "pointer", "fontWeight": "500", "fontSize": "20px", "color": "#000" }
 
@@ -16,6 +18,7 @@ const Header = () => {
 
     }, [index]);
 
+    // ovdje je opisana struktura Header komponente
     return (
         <header>
 
@@ -41,6 +44,7 @@ const Header = () => {
             {Object.keys(korisnik).length === 0 ? <span>Prijavi se</span> : <span>{korisnik["username"]}</span>}
             <Link to={"/prijava"}><div className={styles.profilna}></div></Link>
             <button onClick={() => {
+                navigate("/");
                 setKorisnik({});
                 localStorage.removeItem("korisnik");
             }}>Odjava</button>

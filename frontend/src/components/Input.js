@@ -2,6 +2,8 @@ import React from 'react';
 import styles from '../styles/Prijava.module.css';
 
 const Input = ({ name, label, placeholder, type, onChange, step, value }) => {
+
+    // definira Input komponentu jer ju koristimo više puta
     return (
         <div className={styles.input}>
             {label != "" && <label htmlFor={name}>{label}</label>}

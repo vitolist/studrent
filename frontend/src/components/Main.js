@@ -7,6 +7,7 @@ import MapComponent from './MapComponent';
 
 const Main = () => {
 
+    // sadrzaj ispod Headera
     return (
         <div className={styles.content}>
             <MapComponent />

@@ -1,5 +1,5 @@
 import { React, useEffect, useRef, useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from '../styles/IzradaObjave.module.css';
 import Input from './Input';
 import { KorisnikContext } from '../App';
@@ -8,12 +8,14 @@ import MapPrijava from './MapPrijava';
 
 const IzradaObjave = () => {
     const [korisnik, setKorisnik] = useContext(KorisnikContext);
+    const navigate = useNavigate();
     const [lon, setLon] = useState(null);
     const [lat, setLat] = useState(null);
 
     const [sobe, setSobe] = useState([]);
     const sobeInput = useRef([0, 0, 0, 0, 0]);
 
+    // dodavanje i micanje inputa za sobu
     const dodajSobu = () => {
         if (sobe.length < 5) {
             setSobe([...sobe,
@@ -34,6 +36,7 @@ const IzradaObjave = () => {
         sobeInput[i] = value;
     }
 
+    // funkcija se poziva kada submitamo formu
     const handleSubmit = async (e) => {
         e.preventDefault();
         const val = e.target.elements;
@@ -88,11 +91,14 @@ const IzradaObjave = () => {
         });
         Promise.all(promises);
 
-        // for (let i = 0; i < e.target.elements.length; i++) {
-        //     if (e.target.elements[i].type != "submit") { e.target.elements[i].value = ""; }
-        // }
+        for (let i = 0; i < e.target.elements.length; i++) {
+            if (e.target.elements[i].type != "submit") { e.target.elements[i].value = ""; }
+        }
+
+        navigate("/moji_najmovi");
     }
 
+    // postavljanje varijabli koordinata na vrijednosti dobivene prilikom pritiska na kartu
     const onMapClick = (lon, lat) => {
         setLon(lon);
         setLat(lat);

@@ -13,32 +13,32 @@ const MojiNajmovi = () => {
     const [najmovi, setNajmovi] = useState([]);
     const [ucitano, setUcitano] = useState(false);
 
+    // dohvaca sve stanove koje smo mi izradili
     const ucitajStanove = async () => {
         const stanovi_json = await (await fetch(`/moji_stanovi/${korisnik["id"]}`)).json();
         setStanovi(stanovi_json.map(stan => ({
             id: stan["id"],
             cijena: stan["cijena"],
             ulica: stan["ulica"],
+            grad: stan["grad"],
             // tv: parseInt(najam["tv"]["data"][0]),
             // klima: parseInt(najam["klima"]["data"][0]),
             // ljubimci: parseInt(najam["ljubimci"]["data"][0]),
         })));
     }
 
+    // dohvaca sve stanove u cijem smo mi najmu
     const ucitajNajmove = async () => {
         const najmovi_json = await (await fetch(`/moji_najmovi/${korisnik["id"]}`)).json();
         setNajmovi(najmovi_json.map(stan => ({
             id: stan["stan_id"],
             cijena: stan["cijena"],
+            grad: stan["grad"],
             ulica: stan["ulica"],
         })));
     }
 
     useEffect(() => {
-        // console.log(korisnik)
-        // if (korisnik != {}) { setUcitano(true) }
-        // if (ucitano) { ucitajStanove(); }
-        // if (ucitano) { ucitajNajmove(); }
         setTimeout(() => {
             ucitajNajmove();
             ucitajStanove();
@@ -65,6 +65,7 @@ const MojiNajmovi = () => {
                                 <tr key={stan["id"]}>
                                     <td>{stan["id"]}</td>
                                     <td>{stan["cijena"]}</td>
+                                    <td>{stan["grad"]}</td>
                                     <td>{stan["ulica"]}</td>
                                 </tr>
                             ))}</tbody>
@@ -85,6 +86,7 @@ const MojiNajmovi = () => {
                                 <tr key={i}>
                                     <td>{najam["id"]}</td>
                                     <td>{najam["cijena"]}</td>
+                                    <td>{najam["grad"]}</td>
                                     <td>{najam["ulica"]}</td>
                                 </tr>
                             ))}</tbody>

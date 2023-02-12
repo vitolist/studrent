@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2023 at 04:52 PM
+-- Generation Time: Feb 12, 2023 at 02:39 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -93,7 +93,10 @@ INSERT INTO `adresa` (`id`, `grad_id`, `ulica`, `broj`, `lon`, `lat`, `grad`) VA
 (179, 1, 'jezero', 4, 16.4241, 46.3152, 'Varaždin'),
 (180, 1, 'jezero', 4, 16.4241, 46.3152, 'Čakovec'),
 (181, 1, 'varazs', 4, 46.3129, 16.423, 'Zagreb'),
-(182, 1, 'New York', 7, 40.7066, -73.9673, 'Čakovec');
+(182, 1, 'New York', 7, 40.7066, -73.9673, 'Čakovec'),
+(183, 1, 'Sportska', 14, 46.4008, 16.4468, 'Mihovljan'),
+(184, 1, '123', 123, 45.7049, 16.9037, '123'),
+(185, 1, '3', 123, 45.71, 17.5765, 'hgfdsdfg');
 
 -- --------------------------------------------------------
 
@@ -202,7 +205,10 @@ INSERT INTO `karakteristike` (`id`, `kvadratura`, `broj_soba`, `broj_kuhinja`, `
 (112, 123, 0, 123, 123, b'1', b'1', b'0'),
 (113, 123, 0, 123, 123, b'1', b'1', b'0'),
 (114, 123, 0, 23, 123, b'0', b'0', b'1'),
-(115, 123, 0, 123, 123, b'1', b'0', b'0');
+(115, 123, 0, 123, 123, b'1', b'0', b'0'),
+(116, 123, 0, 123, 123, b'0', b'0', b'0'),
+(117, 123, 0, 123, 123, b'1', b'1', b'0'),
+(118, 3, 0, 3213, 123, b'1', b'0', b'1');
 
 -- --------------------------------------------------------
 
@@ -277,7 +283,9 @@ INSERT INTO `najam` (`id`, `stan_id`, `korisnik_id`, `aktivno`) VALUES
 (13, 67, 33, b'1'),
 (14, 67, 33, b'1'),
 (15, 67, 33, b'1'),
-(16, 67, 33, b'1');
+(16, 67, 33, b'1'),
+(17, 68, 33, b'1'),
+(18, 69, 33, b'1');
 
 -- --------------------------------------------------------
 
@@ -348,8 +356,7 @@ INSERT INTO `skola` (`id`, `naziv`) VALUES
 CREATE TABLE `slike_stana` (
   `id` int(11) NOT NULL,
   `stan_id` int(11) DEFAULT NULL,
-  `url` varchar(255) DEFAULT NULL,
-  `pocetna` bit(1) DEFAULT NULL
+  `url` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -441,7 +448,10 @@ INSERT INTO `stan` (`id`, `adresa_id`, `karakteristike_id`, `aktivan`, `vrijeme_
 (113, 177, 110, b'1', '0000-00-00 00:00:00', 199),
 (114, 180, 113, b'1', '0000-00-00 00:00:00', 777),
 (115, 181, 114, b'1', '0000-00-00 00:00:00', 555),
-(116, 182, 115, b'1', '0000-00-00 00:00:00', 12334);
+(116, 182, 115, b'1', '0000-00-00 00:00:00', 12334),
+(117, 183, 116, b'1', '0000-00-00 00:00:00', 99999),
+(118, 184, 117, b'1', '0000-00-00 00:00:00', 123),
+(119, 185, 118, b'1', '0000-00-00 00:00:00', 123);
 
 -- --------------------------------------------------------
 
@@ -544,7 +554,10 @@ INSERT INTO `vlasnistvo` (`id`, `stan_id`, `vlasnik_id`, `aktivno`) VALUES
 (103, 113, 0, b'1'),
 (104, 114, 33, b'1'),
 (105, 115, 33, b'1'),
-(106, 116, 33, b'1');
+(106, 116, 33, b'1'),
+(107, 117, 33, b'1'),
+(108, 118, 33, b'1'),
+(109, 119, 33, b'1');
 
 --
 -- Indexes for dumped tables
@@ -660,7 +673,7 @@ ALTER TABLE `vlasnistvo`
 -- AUTO_INCREMENT for table `adresa`
 --
 ALTER TABLE `adresa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
 
 --
 -- AUTO_INCREMENT for table `chat`
@@ -678,7 +691,7 @@ ALTER TABLE `grad`
 -- AUTO_INCREMENT for table `karakteristike`
 --
 ALTER TABLE `karakteristike`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 
 --
 -- AUTO_INCREMENT for table `korisnik`
@@ -696,7 +709,7 @@ ALTER TABLE `lajkane`
 -- AUTO_INCREMENT for table `najam`
 --
 ALTER TABLE `najam`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `par`
@@ -738,7 +751,7 @@ ALTER TABLE `sobe`
 -- AUTO_INCREMENT for table `stan`
 --
 ALTER TABLE `stan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT for table `stanari`
@@ -756,7 +769,7 @@ ALTER TABLE `tip_sobe`
 -- AUTO_INCREMENT for table `vlasnistvo`
 --
 ALTER TABLE `vlasnistvo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

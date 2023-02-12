@@ -52,6 +52,7 @@ const Najam = () => {
         <div className={styles.content}>
             <h1>{stan["grad"]}</h1>
             <span className={styles.ulica}>{stan["ulica"]} {stan["broj"]}</span>
+            <span></span>
             <div>
                 <h3>Stanari: </h3>
                 <div className={styles.stanari}>

@@ -38,8 +38,12 @@ const Header = () => {
                 <Link style={index == 2 ? selectedIndex : notSelected}
                     onClick={() => setIndex(2)} to={"chat"}>Chat</Link>
             </nav>
+            {Object.keys(korisnik).length === 0 ? <span>Prijavi se</span> : <span>{korisnik["username"]}</span>}
             <Link to={"/prijava"}><div className={styles.profilna}></div></Link>
-            <span>ime: {korisnik["ime"]}</span>
+            <button onClick={() => {
+                setKorisnik({});
+                localStorage.removeItem("korisnik");
+            }}>Odjava</button>
         </header>
     )
 }

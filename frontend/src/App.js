@@ -12,12 +12,14 @@ import Registracija from "./components/Registracija";
 
 export const KorisnikContext = createContext();
 export const NajmoviContext = createContext();
+export const OdabraniNajamContext = createContext();
 
 function App() {
 
   const [korisnik, setKorisnik] = useState(JSON.parse(localStorage.getItem('korisnik')) || {});
 
   const [najmovi, setNajmovi] = useState([]);
+  const [odabraniNajam, setOdabraniNajam] = useState([]);
 
   // useEffect(() => {
   //   setKorisnik({
@@ -44,24 +46,26 @@ function App() {
     <div className="App">
       <KorisnikContext.Provider value={[korisnik, setKorisnik]}>
         <NajmoviContext.Provider value={[najmovi, setNajmovi]}>
-          <BrowserRouter>
-            <Routes>
+          <OdabraniNajamContext.Provider value={[odabraniNajam, setOdabraniNajam]}>
+            <BrowserRouter>
+              <Routes>
 
-              <Route path="/" element={<Pocetna />} >
-                <Route path="" element={<Main />} >
-                  <Route path="" element={<Iznajmi />} />
-                  <Route path="najam/:stan_id/:adresa_id" element={<Najam />} />
+                <Route path="/" element={<Pocetna />} >
+                  <Route path="" element={<Main />} >
+                    <Route path="" element={<Iznajmi />} />
+                    <Route path="najam/:stan_id/:adresa_id" element={<Najam />} />
+                  </Route>
+                  <Route path="moji_najmovi" element={<MojiNajmovi />} />
+                  <Route path="izrada_objave" element={<IzradaObjave />} />
+                  <Route path="chat" element={<Chat />} />
                 </Route>
-                <Route path="moji_najmovi" element={<MojiNajmovi />} />
-                <Route path="izrada_objave" element={<IzradaObjave />} />
-                <Route path="chat" element={<Chat />} />
-              </Route>
-              <Route path="/prijava" element={<Prijava />} />
-              <Route path="/registracija" element={<Registracija />} />
-              <Route path="/moji_najmovi" element={<MojiNajmovi />} />
+                <Route path="/prijava" element={<Prijava />} />
+                <Route path="/registracija" element={<Registracija />} />
+                <Route path="/moji_najmovi" element={<MojiNajmovi />} />
 
-            </Routes>
-          </BrowserRouter>
+              </Routes>
+            </BrowserRouter>
+          </OdabraniNajamContext.Provider>
         </NajmoviContext.Provider>
       </KorisnikContext.Provider>
     </div>

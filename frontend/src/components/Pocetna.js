@@ -1,8 +1,10 @@
-import React from 'react';
-import { BrowserRouter, Link, Route, Routes, Navigate, Outlet } from "react-router-dom";
+import React, { useEffect, useContext } from 'react';
+import { BrowserRouter, Link, Route, Routes, Navigate, Outlet, useNavigate } from "react-router-dom";
 import Header from './Header';
 import Main from './Main';
 import Prijava from './Prijava';
+import provjera_prijave from './provjera_prijave';
+import { KorisnikContext } from '../App';
 
 const Pocetna = () => {
     const style = {
@@ -11,6 +13,15 @@ const Pocetna = () => {
         flexDirection: "column",
         overflow: "hidden"
     }
+
+    const navigate = useNavigate();
+    const [korisnik, setKorisnik] = useContext(KorisnikContext);
+
+    useEffect(() => {
+        if (!provjera_prijave(korisnik)) {
+            navigate("/prijava");
+        }
+    }, [korisnik]);
 
     return (
         <div style={style}>

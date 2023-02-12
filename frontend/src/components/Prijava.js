@@ -32,7 +32,7 @@ const Prijava = () => {
             <div className={styles.forma}>
                 <Link to={"/"} ><h1>StudRent</h1></Link>
                 <form onSubmit={handleSubmit} action="">
-                    <Input name="username" placeholder="Upišite username" label="Username" />
+                    <Input name="username" placeholder="Upišite korisničko ime" label="Korisničko ime" />
                     <Input type={"password"} name="lozinka" placeholder="Upišite lozinku" label="Lozinka" />
 
                     <input type="submit" value="Prijavi se" />

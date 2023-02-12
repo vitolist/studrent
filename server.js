@@ -305,14 +305,3 @@ app.get("/q/:stan_id", (req, res) => {
 const PORT = 5000;
 
 app.listen(PORT, () => { console.log(`server radi na portu ${PORT}`); });
-//ZbV1T4@l9bynTAv
-
-
-/*
-DELETE FROM stan where 1;
-DELETE FROM karakteristike where 1;
-DELETE FROM vlasnistvo where 1;
-DELETE FROM korisnik where 1;
-DELETE FROM sobe where 1;
-DELETE FROM adresa where 1;
-*/

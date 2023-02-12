@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from '../styles/NajamCard.module.css'
+import styles from '../styles/NajamCard.module.css';
 
 const NajamCard = ({ najam_id, naslov, ulica, cijena, karakteristike, adresa_id }) => {
 
@@ -21,6 +21,7 @@ const NajamCard = ({ najam_id, naslov, ulica, cijena, karakteristike, adresa_id 
                 </div>
                 <span className={styles.cijena}>{cijena} €/mj.</span>
             </div>
+            
         </div>
     )
 }

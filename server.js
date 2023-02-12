@@ -285,6 +285,7 @@ app.get("/stanari/:stan_id", (req, res) => {
     });
 });
 
+// podaci o stanu
 app.get("/o_stanu/:stan_id", (req, res) => {
     let sql = `SELECT *, stan.adresa_id, stan.karakteristike_id FROM adresa, karakteristike, stan WHERE stan.adresa_id=adresa.id AND stan.karakteristike_id=karakteristike.id AND stan.id=${req.params.stan_id}`;
     db.query(sql, (err, result) => {

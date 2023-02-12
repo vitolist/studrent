@@ -49,7 +49,7 @@ const MojiNajmovi = () => {
         <div className={styles.content}>
             <button onClick={() => {
                 navigate("/izrada_objave");
-            }}>izradi objavu</button>
+            }}>Izradi objavu</button>
 
             <div className={styles.popis}>
                 <div>

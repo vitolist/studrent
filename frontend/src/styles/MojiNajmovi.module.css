@@ -1,3 +1,8 @@
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
 .popis {
     display: flex;
     flex-direction: row;
@@ -7,4 +12,26 @@
 
 .popis td {
     border-right: 1px solid black;
+}
+
+.popis>div {
+    height: 50%;
+    overflow-x: auto;
+}
+
+.content button {
+    margin: 10px;
+    padding: 0 16px;
+    height: 32px;
+    border-radius: 5px;
+    background-color: #2667FF;
+    font-weight: 600;
+    color: white;
+    outline: none;
+    border: none;
+}
+
+.content button:hover {
+    cursor: pointer;
+    background-color: #1e5ae6;
 }

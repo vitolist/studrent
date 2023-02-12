@@ -9,7 +9,7 @@ const Najam = () => {
     const params = useParams();
     const navigate = useNavigate();
     const [poruka, setPoruka] = useState("");
-    const [adresa, setAdresa] = useState({});
+    const [stan, setStan] = useState({});
     const [stanari, setStanari] = useState([]);
 
     const iznajmi = async (e) => {
@@ -30,10 +30,10 @@ const Najam = () => {
     }
 
     const dobiAdresu = async () => {
-        const adresa_id = params.adresa_id;
-        const adresa_json = await (await fetch(`/adresa_stana/${adresa_id}`)).json();
-        setAdresa(adresa_json[0]);
-        // console.log(adresa_json);
+        const stan_id = params.stan_id;
+        const stan_json = await (await fetch(`/o_stanu/${stan_id}`)).json();
+        setStan(stan_json[0]);
+        // console.log(stan_json[0]);
     }
 
     const dobiStanare = async () => {
@@ -50,8 +50,8 @@ const Najam = () => {
 
     return (
         <div className={styles.content}>
-            <h1>{adresa["grad"]}</h1>
-            <span className={styles.ulica}>{adresa["ulica"]} {adresa["broj"]}</span>
+            <h1>{stan["grad"]}</h1>
+            <span className={styles.ulica}>{stan["ulica"]} {stan["broj"]}</span>
             <div>
                 <h3>Stanari: </h3>
                 <div className={styles.stanari}>

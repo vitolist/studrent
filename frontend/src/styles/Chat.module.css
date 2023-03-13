@@ -1,0 +1,46 @@
+.content {
+    height: 100%;
+    overflow: hidden;
+}
+
+.poruke {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    width: 50%;
+    background-color: #f4f4f4;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
+.poruka {
+    display: flex;
+    flex-direction: row;
+    padding: 0 8px;
+    margin: 8px 0;
+    color: black;
+}
+
+.poslana {
+    justify-content: flex-end;
+}
+
+.poslana .sadrzaj {
+    background-color: white;
+    border: 1px solid #bdbdbd;
+}
+
+.primljena {
+    justify-content: flex-start;
+}
+
+.primljena .sadrzaj {
+    background-color: #bdbdbd;
+}
+
+.sadrzaj {
+    max-width: 80%;
+    padding: 0 4px;
+    border-radius: 5px;
+}

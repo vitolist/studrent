@@ -1,11 +1,130 @@
 .content {
     display: flex;
     flex-direction: row;
+    background-color: #F1F4FB;
+    padding: 12px;
+    width: 100%;
+    height: 100%;
+    font-weight: 600;
+}
+
+
+/*  */
+
+.content h1 {
+    font-size: 16px;
+    text-decoration: underline;
+}
+
+.forma {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    padding: 12px;
+    background-color: #fff;
+}
+
+.forma form {
+    height: 100%;
+}
+
+.divider {
+    width: 100%;
+    height: 2px;
+    background-color: #CCC;
+}
+
+.gore {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    width: 100%;
+    height: 60%;
+    /* background-color: pink; */
+}
+
+.dole {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    width: 100%;
+    height: 40%;
+    /* background-color: pink; */
+}
+
+.column {
+    /* display: flex; */
+    /* flex-direction: column; */
+    justify-content: space-between;
     width: 100%;
     height: 100%;
 }
 
-.forma {
+.column>div {
+    display: flex;
+    margin-bottom: 4px;
+}
+
+textarea {
+    margin: 0;
+    padding: 0;
+}
+
+.column input[type="text"],
+.column input[type="number"],
+.column textarea,
+.column select {
+    flex: 1;
+}
+
+.sobe {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    width: 33%;
+    height: 100%;
+}
+
+.soba {
+    height: 100%;
+    padding: 4px;
+    background-color: #F1F4FB;
+    border-radius: 5px;
+}
+
+.mapa {
+    width: 67%;
+    height: 100%;
+}
+
+.mapa>div>div:not(:first-child) {
+    display: none;
+}
+
+/* TODO popraviti ^ */
+
+.slika {
+    position: relative;
+    display: block;
+    height: 160px;
+    background-color: #F1F4FB;
+    cursor: pointer;
+}
+
+.slika img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+/*  */
+
+/* .forma {
     padding: 0 28px;
     width: 60%;
     height: 100%;
@@ -69,4 +188,4 @@
 .forma input[type="submit"]:hover {
     cursor: pointer;
     background-color: #8ec8f2;
-}
+} */
